@@ -27,27 +27,23 @@ This idea was validated and enhanced during a Peer-Assisted Learning (PAL) sessi
 - **JavaScript**: Interactivity and data handling.
 
 
-## Sprint Planning
+## Sprint Planning and Progress
 ### Sprint 1 (Weeks 1-2)
 - **Goal:** Establish the project foundation.
-- **Tasks:**
-  - Set up GitHub repository.
-  - Draft README file.
-  - Create initial UML diagrams (Use Case and Class diagrams).
-  - Design the project structure and home page layout.
-- **Log:** PAL session attended on **[27/10/2024]** provided valuable insights and direction for the project.
+- **Completed:**
+  - GitHub repository created on **5/12/2024**.
+  - Initial README file drafted.
+  - Use Case and Class diagrams completed on **7/12/2024**.
+  - Feedback from the PAL session on **27/11/2024** integrated into project goals.
 
 ### Sprint 2 (Weeks 3-4)
 - **Goal:** Build a basic prototype.
-- **Tasks:**
-  - Implement the HTML structure of the application.
-  - Add CSS for layout and styling.
-  - Write JavaScript to handle adding and displaying job applications.
-- **Log:** Feedback from Sprint 1 reviewed and applied.
+- **Completed/In Progress:**
+  - HTML structure of the application.
+  - CSS for layout and styling.
+  - JavaScript to handle adding and displaying job applications.
+  - Design document drafted on **7/12/2024**.
 
-## Acknowledgments
-- **Peer-Assisted Learning (PAL):** For valuable feedback and guidance.
-- Module Staff: For support and instructional resources.
 
 ---
 
