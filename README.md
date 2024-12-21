@@ -5,9 +5,9 @@
 The Job Application Tracker is a single-page web application designed to streamline the process of managing job applications. It enables users to efficiently add, edit, view, and track their applications, ensuring they stay organized and informed throughout their job search journey.
 
 ## Background
-This idea was validated and enhanced during a Peer-Assisted Learning (PAL) session on **[Insert Date]**. During the session:
+This idea was validated and enhanced during a Peer-Assisted Learning (PAL) session on **November 27, 2024**. During the session:
 - The project was recognized as highly relevant for job seekers.
-- Suggestions included implementing a filtering/search functionality and a simple, visual progress tracker.
+- Suggestions included implementing filtering/search functionality and a simple, visual progress tracker.
 - It was recommended to start with a prototype focusing on core features, ensuring clarity and simplicity.
 
 ## Features
@@ -26,25 +26,30 @@ This idea was validated and enhanced during a Peer-Assisted Learning (PAL) sessi
 - **CSS**: Styling and layout.
 - **JavaScript**: Interactivity and data handling.
 
-
 ## Sprint Planning and Progress
-### Sprint 1 (Weeks 1-2)
+
+### Sprint 1 (Weeks 1-2: December 5 - December 18, 2024)
 - **Goal:** Establish the project foundation.
 - **Completed:**
-  - GitHub repository created on **5/12/2024**.
+  - GitHub repository created on **December 5, 2024**.
   - Initial README file drafted.
-  - Use Case and Class diagrams completed on **7/12/2024**.
-  - Feedback from the PAL session on **27/11/2024** integrated into project goals.
+  - Use Case and Class diagrams completed on **December 7, 2024**.
+  - Feedback from the PAL session on **November 27, 2024** integrated into project goals.
 
-### Sprint 2 (Weeks 3-4)
+### Sprint 2 (Weeks 3-4: December 19 - January 1, 2025)
 - **Goal:** Build a basic prototype.
 - **Completed/In Progress:**
   - HTML structure of the application.
   - CSS for layout and styling.
   - JavaScript to handle adding and displaying job applications.
-  - Design document drafted on **7/12/2024**.
-
+  - Design document drafted on **December 7, 2024**.
+  - State and Sequence diagrams initiated.
+  - Implementation of add and edit functionalities in progress.
 
 ---
 
 *This README will be updated as the project progresses.*
+
+---
+
+
