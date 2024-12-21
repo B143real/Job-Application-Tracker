@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .actions button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn-primary {
+            background-color: #007BFF;
+            color: white;
+        }
+        .btn-secondary {
+            background-color: #6c757d;
+            color: white;
+        }
+        .btn-danger {
+            background-color: #dc3545;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Job Application Tracker</h1>
+    <div class="container">
+        <form id="jobForm">
+            <div class="form-group">
+                <label for="jobTitle">Job Title</label>
+                <input type="text" id="jobTitle" required>
+            </div>
+            <div class="form-group">
+                <label for="company">Company</label>
+                <input type="text" id="company" required>
+            </div>
+            <div class="form-group">
+                <label for="status">Status</label>
+                <select id="status" required>
+                    <option value="Applied">Applied</option>
+                    <option value="Interview Scheduled">Interview Scheduled</option>
+                    <option value="Offer Received">Offer Received</option>
+                    <option value="Rejected">Rejected</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="dateApplied">Date Applied</label>
+                <input type="date" id="dateApplied" required>
+            </div>
+            <div class="form-group">
+                <label for="notes">Notes</label>
+                <input type="text" id="notes">
+            </div>
+            <div class="actions">
+                <button type="submit" class="btn-primary">Add Job</button>
+                <button type="button" id="clearForm" class="btn-secondary">Clear</button>
+            </div>
+        </form>
+
+        <h2>Applications</h2>
+        <table id="jobTable">
+            <thead>
+                <tr>
+                    <th>Job Title</th>
+                    <th>Company</th>
+                    <th>Status</th>
+                    <th>Date Applied</th>
+                    <th>Notes</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <script>
+        const jobForm = document.getElementById("jobForm");
+        const jobTable = document.getElementById("jobTable").querySelector("tbody");
+        const clearFormButton = document.getElementById("clearForm");
+
+        let applications = JSON.parse(localStorage.getItem("applications")) || [];
+
+        function saveApplications() {
+            localStorage.setItem("applications", JSON.stringify(applications));
+        }
+
+        function renderApplications() {
+            jobTable.innerHTML = "";
+            applications.forEach((app, index) => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${app.jobTitle}</td>
+                    <td>${app.company}</td>
+                    <td>${app.status}</td>
+                    <td>${app.dateApplied}</td>
+                    <td>${app.notes}</td>
+                    <td>
+                        <button class="btn-secondary" onclick="editApplication(${index})">Edit</button>
+                        <button class="btn-danger" onclick="deleteApplication(${index})">Delete</button>
+                    </td>
+                `;
+                jobTable.appendChild(row);
+            });
+        }
+
+        function addApplication(event) {
+            event.preventDefault();
+            const jobTitle = document.getElementById("jobTitle").value;
+            const company = document.getElementById("company").value;
+            const status = document.getElementById("status").value;
+            const dateApplied = document.getElementById("dateApplied").value;
+            const notes = document.getElementById("notes").value;
+
+            applications.push({ jobTitle, company, status, dateApplied, notes });
+            saveApplications();
+            renderApplications();
+            jobForm.reset();
+        }
+
+        function editApplication(index) {
+            const app = applications[index];
+            document.getElementById("jobTitle").value = app.jobTitle;
+            document.getElementById("company").value = app.company;
+            document.getElementById("status").value = app.status;
+            document.getElementById("dateApplied").value = app.dateApplied;
+            document.getElementById("notes").value = app.notes;
+
+            deleteApplication(index);
+        }
+
+        function deleteApplication(index) {
+            applications.splice(index, 1);
+            saveApplications();
+            renderApplications();
+        }
+
+        clearFormButton.addEventListener("click", () => jobForm.reset());
+        jobForm.addEventListener("submit", addApplication);
+
+        renderApplications();
+    </script>
+</body>
+</html>
