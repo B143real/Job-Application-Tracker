@@ -1,15 +1,21 @@
 # Job Application Tracker
 
 ## Project Vision
-The Job Application Tracker is a single-page web application designed to streamline the process of managing job applications. It allows users to efficiently add, edit, view, and track their applications, ensuring they stay organized and informed throughout their job search journey.
+The Job Application Tracker is a user-centric, single-page web application designed to simplify job search management for users by enabling them to efficiently track, organize, and prioritize their job applications. It provides a streamlined and interactive solution to improve productivity and decision-making during the job search process. 
+
+This tool reduces the stress of job hunting by consolidating all application details in one place, making progress tracking intuitive and user-friendly.
 
 ---
 
 ## Background
-This idea was validated and enhanced during a Peer-Assisted Learning (PAL) session on **November 27, 2024**. During the session:
-- The project was recognized as highly relevant for job seekers.
-- Suggestions included implementing filtering/search functionality and a simple, visual progress tracker.
-- It was recommended to start with a prototype focusing on core features, ensuring clarity and simplicity.
+Job seekers often face challenges in staying organized during their job search. Tracking multiple applications across different platforms can lead to missed deadlines and opportunities. The Job Application Tracker was conceptualized to address these organizational challenges and create a centralized platform for managing job applications.
+
+During a Peer-Assisted Learning (PAL) session on **November 27, 2024**, this idea was validated by peers and mentors, who recognized its relevance and potential impact. Key feedback from the session emphasized the importance of:
+- Implementing intuitive filtering and search functionalities to quickly locate applications based on specific criteria.
+- Adding a visual progress tracker to help users gauge their application stages at a glance.
+- Prioritizing clarity and simplicity in the initial prototype to ensure usability for a wide audience.
+
+This feedback shaped the design and development process, ensuring the tool meets user needs and serves as an innovative solution to real-world job application challenges.
 
 ---
 
@@ -102,7 +108,4 @@ This idea was validated and enhanced during a Peer-Assisted Learning (PAL) sessi
 ---
 
 *This README will continue to be updated as the project progresses.*
-
-
-
 
