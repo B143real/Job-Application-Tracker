@@ -22,17 +22,15 @@ This idea was validated and enhanced during a Peer-Assisted Learning (PAL) sessi
    - **Company** or **Date Applied**.
 4. Persistent data storage using `localStorage`.
 5. Track application progress visually using a progress bar.
-
-### **Future Enhancements**
-- Drag-and-drop prioritization of applications.
-- Advanced filtering and analytics options.
-- Optimized design for mobile responsiveness.
+6. Select **Date Applied** using a calendar picker for consistent date input.
+7. **Form Validation:**
+   - Ensures users complete required fields (e.g., "Job Title," "Company," "Status," and "Date Applied") before submission using HTML5's `required` attribute.
 
 ---
 
 ## Technologies Used
 - **HTML:** Structure of the web page.
-- **CSS:** Styling for a responsive and user-friendly layout.
+- **CSS:** Styling for a clean and user-friendly layout.
 - **JavaScript:** Interactivity, data handling, and local storage integration.
 - **PlantUML:** For system diagrams like Use Case, Class, and Sequence Diagrams.
 
@@ -50,6 +48,8 @@ This idea was validated and enhanced during a Peer-Assisted Learning (PAL) sessi
 3. **Test the Features:**
    - Add, edit, delete, and filter job applications.
    - View the progress bar for application tracking.
+   - Select application dates using the calendar picker.
+   - Experience built-in form validation for required fields.
    - Data is saved persistently using `localStorage`.
 
 ---
@@ -74,32 +74,35 @@ This idea was validated and enhanced during a Peer-Assisted Learning (PAL) sessi
 - **Completed:**
   - Completed filtering functionality for searching by status and other criteria.
   - Integrated progress tracking visuals using a dynamic progress bar.
-  - Enhanced the UI for responsiveness and interactivity.
+  - Enhanced the UI for clarity and interactivity.
   - Finalized and annotated Use Case, Class, and Sequence diagrams.
 
-
+---
 
 ## Challenges and Solutions
 ### **Challenges:**
 1. Ensuring data persistence without a backend.
 2. Debugging filtering logic for complex user inputs.
-3. Designing a responsive and interactive UI.
+3. Designing an intuitive and visually appealing UI.
 
 ### **Solutions:**
 1. Used browser `localStorage` for lightweight and reliable data persistence.
 2. Conducted iterative testing with mock data to validate filtering logic.
-3. Applied CSS flexbox, media queries, and hover effects for a responsive and engaging design.
+3. Enhanced the layout and functionality with CSS for a single-page application.
 
 ---
 
 ## Next Steps
-1. Gather user feedback to identify areas for improvement.
-2. Implement advanced features like drag-and-drop prioritization.
-3. Enhance mobile responsiveness further.
-4. Prepare for the final presentation in May 2025, including a polished prototype and documentation.
+1. Refine and test all implemented features to ensure seamless functionality.
+2. Finalize design documentation to align with project implementation.
+3. Record and prepare the interim video submission for January 2025.
+4. Incorporate feedback from the interim submission into further improvements.
+5. Prepare for the final presentation in May 2025, ensuring compliance with the single-page application requirement.
 
 ---
 
 *This README will continue to be updated as the project progresses.*
+
+
 
 
