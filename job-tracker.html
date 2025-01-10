@@ -269,9 +269,11 @@
         }
 
         function deleteApplication(index) {
-            applications.splice(index, 1);
-            saveApplications();
-            renderApplications();
+            if (confirm("Are you sure you want to delete this application?")) {
+                applications.splice(index, 1);
+                saveApplications();
+                renderApplications();
+            }
         }
 
         filterStatus.addEventListener("change", renderApplications);
