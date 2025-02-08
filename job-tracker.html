@@ -3,284 +3,178 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Job Application Tracker</title>
+    <title>Job Tracker 2.0</title>
+    <script src="https://kit.fontawesome.com/YOUR-KIT-ID.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* General Styling */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f4f4f4;
+        /* (Your existing CSS here) */
+
+        /* Dark Mode Styles */
+        .dark-mode {
+            background-color: #121212;
+            color: white;
         }
-        h1 {
+
+        /* Settings Panel */
+        #settings {
+            display: none;
+        }
+
+        #settings h1 {
             text-align: center;
-        }
-        .container {
-            max-width: 800px;
-            margin: auto;
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
         }
 
-        /* Table Styling */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-        table, th, td {
-            border: 1px solid #ddd;
-        }
-        th, td {
-            padding: 10px;
-            text-align: center;
-        }
-        th {
-            background-color: #f4f4f4;
-        }
-        tr:hover {
-            background-color: #f0f8ff;
-        }
-
-        /* Form Styling */
-        .form-group {
-            margin-bottom: 15px;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-        }
-        .form-group input, .form-group select {
-            width: 100%;
-            padding: 8px;
-            box-sizing: border-box;
-        }
-
-        /* Button Styling */
-        .actions {
+        #settingsForm {
             display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-        }
-        .actions button {
-            padding: 10px 15px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: opacity 0.3s ease;
-        }
-        .btn-primary {
-            background-color: #007BFF;
-            color: white;
-        }
-        .btn-primary:hover {
-            opacity: 0.9;
-        }
-        .btn-secondary {
-            background-color: #6c757d;
-            color: white;
-        }
-        .btn-secondary:hover {
-            opacity: 0.9;
-        }
-        .btn-danger {
-            background-color: #dc3545;
-            color: white;
-        }
-        .btn-danger:hover {
-            opacity: 0.9;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
         }
 
-        /* Progress Bar Styling */
-        .progress-bar {
-            width: 100%;
-            background-color: #e0e0e0;
-            border-radius: 5px;
-            overflow: hidden;
-            margin: 10px 0;
-        }
-        .progress-bar div {
-            height: 10px;
-            background-color: #007BFF;
-            width: 50%; /* Example: Set dynamically via JavaScript */
-            transition: width 0.5s ease;
-        }
+        /* (Other settings-related styles) */
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .container {
-                padding: 10px;
-                width: 100%;
-            }
-            table {
-                font-size: 14px;
-            }
-            th, td {
-                padding: 8px;
-            }
-        }
     </style>
 </head>
 <body>
-    <h1>Job Application Tracker</h1>
-    <div class="container">
-        <form id="jobForm">
-            <div class="form-group">
-                <label for="jobTitle">Job Title</label>
-                <input type="text" id="jobTitle" required>
-            </div>
-            <div class="form-group">
-                <label for="company">Company</label>
-                <input type="text" id="company" required>
-            </div>
-            <div class="form-group">
-                <label for="status">Status</label>
-                <select id="status" required>
-                    <option value="Applied">Applied</option>
-                    <option value="Interview Scheduled">Interview Scheduled</option>
-                    <option value="Offer Received">Offer Received</option>
-                    <option value="Rejected">Rejected</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="dateApplied">Date Applied</label>
-                <input type="date" id="dateApplied" required>
-            </div>
-            <div class="form-group">
-                <label for="notes">Notes</label>
-                <input type="text" id="notes">
-            </div>
-            <div class="actions">
-                <button type="submit" class="btn-primary">Add Job</button>
-                <button type="button" id="clearForm" class="btn-secondary">Clear</button>
-            </div>
-        </form>
 
-        <div>
-            <label for="filterStatus">Filter by Status:</label>
-            <select id="filterStatus">
-                <option value="">All</option>
-                <option value="Applied">Applied</option>
-                <option value="Interview Scheduled">Interview Scheduled</option>
-                <option value="Offer Received">Offer Received</option>
-                <option value="Rejected">Rejected</option>
-            </select>
-        </div>
+<header>
+    <button class="menu-btn">☰ Menu</button>
+    Job Application Tracker
+    <button class="toggle-btn">🌙</button>
+</header>
 
-        <h2>Applications</h2>
-        <table id="jobTable">
-            <thead>
-                <tr>
-                    <th>Job Title</th>
-                    <th>Company</th>
-                    <th>Status</th>
-                    <th>Date Applied</th>
-                    <th>Notes</th>
-                    <th>Progress</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
+<nav class="sidebar">
+    <ul>
+        <li><a href="#" class="nav-link" id="login-register-btn">Login/Register</a></li>
+        <li><a href="#" class="nav-link" data-target="dashboard">Dashboard</a></li>
+        <li><a href="#" class="nav-link" data-target="add-job">Add Job</a></li>
+        <li><a href="#" class="nav-link" data-target="applications">Applications</a></li>
+        <li><a href="#" class="nav-link" data-target="settings">Settings</a></li>
+    </ul>
+</nav>
+
+<div class="main-content">
+    <!-- Dashboard Section -->
+    <div id="dashboard" style="display: block;">
+        <h1 id="totalJobsLabel">Total Jobs</h1>
+        <!-- (Dashboard Content) -->
     </div>
 
-    <script>
-        const jobForm = document.getElementById("jobForm");
-        const jobTable = document.getElementById("jobTable").querySelector("tbody");
-        const clearFormButton = document.getElementById("clearForm");
-        const filterStatus = document.getElementById("filterStatus");
+    <!-- Settings Section -->
+    <div id="settings">
+        <h1 id="settingsLabel">Settings</h1>
+        <form id="settingsForm">
+            <label for="themeSelect" id="themeLabel">Theme:</label>
+            <select id="themeSelect">
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
+            </select>
+            <label for="languageSelect" id="languageLabel">Language:</label>
+            <select id="languageSelect">
+                <option value="en">English</option>
+                <option value="es">Spanish</option>
+                <option value="fr">French</option>
+            </select>
+            <label for="notificationToggle" id="enableNotificationsLabel">Enable Notifications:</label>
+            <input type="checkbox" id="notificationToggle">
+            <button type="submit" id="saveSettingsButton">Save Settings</button>
+        </form>
+    </div>
+</div>
 
-        let applications = JSON.parse(localStorage.getItem("applications")) || [];
-        let editingIndex = null;
+<script>
+// Multi-Language Support
+const translations = {
+    en: {
+        totalJobs: "Total Jobs",
+        pending: "Pending",
+        accepted: "Accepted",
+        rejected: "Rejected",
+        addJob: "Add Job",
+        applications: "Applications",
+        settings: "Settings",
+        theme: "Theme",
+        language: "Language",
+        saveSettings: "Save Settings"
+    },
+    es: {
+        totalJobs: "Trabajos Totales",
+        pending: "Pendiente",
+        accepted: "Aceptado",
+        rejected: "Rechazado",
+        addJob: "Agregar Trabajo",
+        applications: "Aplicaciones",
+        settings: "Configuraciones",
+        theme: "Tema",
+        language: "Idioma",
+        saveSettings: "Guardar Configuraciones"
+    },
+    fr: {
+        totalJobs: "Emplois Totals",
+        pending: "En Attente",
+        accepted: "Accepté",
+        rejected: "Rejeté",
+        addJob: "Ajouter un Emploi",
+        applications: "Applications",
+        settings: "Paramètres",
+        theme: "Thème",
+        language: "Langue",
+        saveSettings: "Enregistrer les Paramètres"
+    }
+};
 
-        function saveApplications() {
-            localStorage.setItem("applications", JSON.stringify(applications));
-        }
+function updateLanguage(language) {
+    document.getElementById("totalJobsLabel").textContent = translations[language].totalJobs;
+    document.getElementById("pendingLabel").textContent = translations[language].pending;
+    document.getElementById("acceptedLabel").textContent = translations[language].accepted;
+    document.getElementById("rejectedLabel").textContent = translations[language].rejected;
+    document.getElementById("addJobLabel").textContent = translations[language].addJob;
+    document.getElementById("applicationsLabel").textContent = translations[language].applications;
+    document.getElementById("settingsLabel").textContent = translations[language].settings;
+    document.getElementById("themeLabel").textContent = translations[language].theme;
+    document.getElementById("languageLabel").textContent = translations[language].language;
+    document.getElementById("saveSettingsButton").textContent = translations[language].saveSettings;
+}
 
-        function renderApplications() {
-            const filteredApps = applications.filter(app => {
-                return filterStatus.value === "" || app.status === filterStatus.value;
-            });
+document.getElementById("languageSelect").addEventListener("change", function() {
+    const selectedLanguage = this.value;
+    updateLanguage(selectedLanguage);
+});
 
-            jobTable.innerHTML = "";
-            filteredApps.forEach((app, index) => {
-                const progress = getProgressPercentage(app.status);
-                const row = document.createElement("tr");
-                row.innerHTML = `
-                    <td>${app.jobTitle}</td>
-                    <td>${app.company}</td>
-                    <td>${app.status}</td>
-                    <td>${app.dateApplied}</td>
-                    <td>${app.notes}</td>
-                    <td>
-                        <div class="progress-bar"><div style="width: ${progress}%"></div></div>
-                    </td>
-                    <td>
-                        <button class="btn-secondary" onclick="editApplication(${index})">Edit</button>
-                        <button class="btn-danger" onclick="deleteApplication(${index})">Delete</button>
-                    </td>
-                `;
-                jobTable.appendChild(row);
-            });
-        }
+// Dark Mode Toggle
+document.querySelector('.toggle-btn').addEventListener('click', function() {
+    document.body.classList.toggle('dark-mode');
+});
 
-        function getProgressPercentage(status) {
-            switch (status) {
-                case "Applied": return 25;
-                case "Interview Scheduled": return 50;
-                case "Offer Received": return 100;
-                case "Rejected": return 0;
-                default: return 0;
-            }
-        }
+// Save Settings
+document.getElementById("settingsForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    const theme = document.getElementById("themeSelect").value;
+    const language = document.getElementById("languageSelect").value;
+    const notificationsEnabled = document.getElementById("notificationToggle").checked;
 
-        function addApplication(event) {
-            event.preventDefault();
-            const jobTitle = document.getElementById("jobTitle").value;
-            const company = document.getElementById("company").value;
-            const status = document.getElementById("status").value;
-            const dateApplied = document.getElementById("dateApplied").value;
-            const notes = document.getElementById("notes").value;
+    localStorage.setItem("theme", theme);
+    localStorage.setItem("language", language);
+    localStorage.setItem("notificationsEnabled", notificationsEnabled);
 
-            if (editingIndex !== null) {
-                applications[editingIndex] = { jobTitle, company, status, dateApplied, notes };
-                editingIndex = null;
-                document.querySelector(".btn-primary").innerText = "Add Job";
-            } else {
-                applications.push({ jobTitle, company, status, dateApplied, notes });
-            }
+    alert("Settings saved!");
+});
 
-            saveApplications();
-            renderApplications();
-            jobForm.reset();
-        }
+document.addEventListener("DOMContentLoaded", () => {
+    const savedTheme = localStorage.getItem("theme") || "light";
+    const savedLanguage = localStorage.getItem("language") || "en";
 
-        function editApplication(index) {
-            const app = applications[index];
-            document.getElementById("jobTitle").value = app.jobTitle;
-            document.getElementById("company").value = app.company;
-            document.getElementById("status").value = app.status;
-            document.getElementById("dateApplied").value = app.dateApplied;
-            document.getElementById("notes").value = app.notes;
+    document.getElementById("themeSelect").value = savedTheme;
+    document.getElementById("languageSelect").value = savedLanguage;
 
-            editingIndex = index;
-            document.querySelector(".btn-primary").innerText = "Save Changes";
-        }
+    updateLanguage(savedLanguage);
+    if (savedTheme === "dark") {
+        document.body.classList.add("dark-mode");
+    }
+});
+</script>
 
-        function deleteApplication(index) {
-            if (confirm("Are you sure you want to delete this application?")) {
-                applications.splice(index, 1);
-                saveApplications();
-                renderApplications();
-            }
-        }
-
-        filterStatus.addEventListener("change", renderApplications);
-        clearFormButton.addEventListener("click", () => jobForm.reset());
-        jobForm.addEventListener("submit", addApplication);
-
-        renderApplications();
-    </script>
 </body>
 </html>
