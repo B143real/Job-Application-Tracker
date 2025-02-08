@@ -1,14 +1,14 @@
 # Job Application Tracker
 
 ## Project Vision
-The Job Application Tracker is a user-centric, single-page web application designed to simplify job search management for users by enabling them to efficiently track, organize, and prioritize their job applications. It provides a streamlined and interactive solution to improve productivity and decision-making during the job search process. 
+The **Job Application Tracker** is a user-centric, single-page web application designed to simplify job search management for users by enabling them to efficiently track, organize, and prioritize their job applications. It provides a streamlined and interactive solution to improve productivity and decision-making during the job search process.
 
 This tool reduces the stress of job hunting by consolidating all application details in one place, making progress tracking intuitive and user-friendly.
 
 ---
 
 ## Background
-Job seekers often face challenges in staying organized during their job search. Tracking multiple applications across different platforms can lead to missed deadlines and opportunities. The Job Application Tracker was conceptualized to address these organizational challenges and create a centralized platform for managing job applications.
+Job seekers often face challenges in staying organized during their job search. Tracking multiple applications across different platforms can lead to missed deadlines and opportunities. The **Job Application Tracker** was conceptualized to address these organizational challenges and create a centralized platform for managing job applications.
 
 During a Peer-Assisted Learning (PAL) session on **November 27, 2024**, this idea was validated by peers and mentors, who recognized its relevance and potential impact. Key feedback from the session emphasized the importance of:
 - Implementing intuitive filtering and search functionalities to quickly locate applications based on specific criteria.
@@ -20,25 +20,31 @@ This feedback shaped the design and development process, ensuring the tool meets
 ---
 
 ## Features
+
 ### **Core Functionalities**
 1. Add, edit, and delete job applications.
 2. View job application details in a table format.
 3. Filter or search applications by criteria such as:
-   - **Status:** Applied, Interview Scheduled, Offer Received, Rejected.
+   - **Status**: Applied, Interview Scheduled, Offer Received, Rejected.
    - **Company** or **Date Applied**.
-4. Persistent data storage using `localStorage`.
+4. Persistent data storage using **localStorage**.
 5. Track application progress visually using a progress bar.
 6. Select **Date Applied** using a calendar picker for consistent date input.
-7. **Form Validation:**
+7. **Form Validation**:
    - Ensures users complete required fields (e.g., "Job Title," "Company," "Status," and "Date Applied") before submission using HTML5's `required` attribute.
+8. **Multi-Language Support**: Switch between English, Spanish, and French with dynamically updated interface text.
+9. **Dark Mode**: Toggle between light and dark themes for better user experience.
+10. **Settings Panel**: Customize preferences like theme, language, and notifications, with settings saved persistently using **localStorage**.
 
 ---
 
 ## Technologies Used
-- **HTML:** Structure of the web page.
-- **CSS:** Styling for a clean and user-friendly layout.
-- **JavaScript:** Interactivity, data handling, and local storage integration.
-- **PlantUML:** For system diagrams like Use Case, Class, and Sequence Diagrams.
+- **HTML**: Structure of the web page.
+- **CSS**: Styling for a clean and user-friendly layout.
+- **JavaScript**: Interactivity, data handling, and local storage integration.
+- **localStorage**: For saving and persisting user settings (theme, language, and notifications).
+- **Font Awesome**: For icons.
+- **Chart.js**: For visualizing job application data (optional, if used).
 
 ---
 
@@ -56,56 +62,85 @@ This feedback shaped the design and development process, ensuring the tool meets
    - View the progress bar for application tracking.
    - Select application dates using the calendar picker.
    - Experience built-in form validation for required fields.
-   - Data is saved persistently using `localStorage`.
+   - Switch between languages (English, Spanish, French).
+   - Toggle between light and dark themes.
+   - Modify settings like language, theme, and notifications in the settings panel.
 
 ---
 
 ## Sprint Planning and Progress
+
 ### **Sprint 1 (Dec 5 – Dec 18, 2024)**
-- **Goal:** Establish the project foundation.
-- **Completed:**
+- **Goal**: Establish the project foundation.
+- **Completed**:
   - Created GitHub repository and initial project structure.
   - Drafted initial Use Case and Class diagrams.
   - Incorporated feedback from the PAL session into project goals.
 
 ### **Sprint 2 (Dec 19 – Jan 1, 2025)**
-- **Goal:** Build a basic prototype.
-- **Completed:**
+- **Goal**: Build a basic prototype.
+- **Completed**:
   - Developed HTML and CSS structure for the application.
   - Implemented add and edit functionalities using JavaScript.
   - Initiated filtering functionality and integrated local storage.
 
 ### **Sprint 3 (Jan 2 – Jan 12, 2025)**
-- **Goal:** Refine and enhance the prototype.
-- **Completed:**
+- **Goal**: Refine and enhance the prototype.
+- **Completed**:
   - Completed filtering functionality for searching by status and other criteria.
   - Integrated progress tracking visuals using a dynamic progress bar.
   - Enhanced the UI for clarity and interactivity.
   - Finalized and annotated Use Case, Class, and Sequence diagrams.
 
+### **Sprint 4 (Jan 13 – Jan 26, 2025)**
+- **Goal**: Implement multi-language support, dark mode toggle, and settings panel.
+- **Completed**:
+  - **Multi-Language Support**: Added functionality to switch between English, Spanish, and French.
+  - **Dark Mode**: Implemented a theme toggle to switch between light and dark modes.
+  - **Settings Panel**: Created a settings section for users to adjust theme, language, and notifications preferences.
+  - **LocalStorage Persistence**: Ensured that user settings (theme, language, notifications) are saved and persist across sessions.
+
 ---
 
 ## Challenges and Solutions
+
 ### **Challenges:**
 1. Ensuring data persistence without a backend.
 2. Debugging filtering logic for complex user inputs.
-3. Designing an intuitive and visually appealing UI.
+3. Designing an intuitive and visually appealing UI with multi-language and theme toggle functionality.
 
 ### **Solutions:**
-1. Used browser `localStorage` for lightweight and reliable data persistence.
+1. Used browser **localStorage** for lightweight and reliable data persistence.
 2. Conducted iterative testing with mock data to validate filtering logic.
-3. Enhanced the layout and functionality with CSS for a single-page application.
+3. Enhanced the layout and functionality with **CSS** for a single-page application and ensured clarity across multiple languages and themes.
 
 ---
 
-## Next Steps
-1. Refine and test all implemented features to ensure seamless functionality.
-2. Finalize design documentation to align with project implementation.
-3. Record and prepare the interim video submission for January 2025.
-4. Incorporate feedback from the interim submission into further improvements.
-5. Prepare for the final presentation in May 2025, ensuring compliance with the single-page application requirement.
+## Next Steps (Sprint 5)
 
----
+1. **Refine User Interface and Experience:**
+   - Polish the design and interactions for a smoother user experience.
+   - Implement final UI adjustments based on user feedback and testing.
+   - Ensure the app is responsive across all devices and screen sizes.
+
+2. **Implement Application Security Features:**
+   - Add any necessary **input validation** or **security measures** to protect against invalid data entry.
+   - If applicable, enhance the **privacy mode** settings to provide better data handling and protection for users.
+
+3. **Testing and Bug Fixing:**
+   - Perform thorough testing of all features to ensure stability and smooth functionality.
+   - Test the settings panel, multi-language switching, and dark mode toggle thoroughly.
+
+4. 
+5. **Integrate User Feedback:**
+   - After gathering feedback from peers or instructors, integrate any relevant suggestions or improvements into the app.
+   -  implement a simulation of user authentication** or  for securing job data (if it's part of future plans or requirements).
+
+6. **Finalize LocalStorage and Data Management:**
+   - Ensure all data (like job applications, preferences, etc.) are correctly stored and retrieved from 
+
+
+
 
 *This README will continue to be updated as the project progresses.*
 
