@@ -7,43 +7,17 @@
     <script src="https://kit.fontawesome.com/YOUR-KIT-ID.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        /* (Your existing CSS here) */
-
-        /* Dark Mode Styles */
-        .dark-mode {
-            background-color: #121212;
-            color: white;
-        }
-
-        /* Settings Panel */
-        #settings {
-            display: none;
-        }
-
-        #settings h1 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        #settingsForm {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            align-items: center;
-        }
-
-        /* (Other settings-related styles) */
-
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header>
-    <button class="menu-btn">☰ Menu</button>
-    Job Application Tracker
-    <button class="toggle-btn">🌙</button>
-</header>
+    <header>
+        <div class="header-container">
+            <button class="menu-btn">☰ Menu</button>
+            <h1 class="header-title">Job Application Tracker</h1>
+            <button class="toggle-btn">🌙</button>
+        </div>
+    </header>
 
 <nav class="sidebar">
     <ul>
@@ -55,11 +29,76 @@
     </ul>
 </nav>
 
+<!-- Modal -->
+<div id="login-register-modal" class="modal">
+    <div class="modal-content">
+        <h2>Login</h2>
+        <input type="text" placeholder="Username" id="login-username">
+        <input type="password" placeholder="Password" id="login-password">
+        <button id="login-btn">Login</button>
+        <h2>Register</h2>
+        <input type="text" placeholder="Username" id="register-username">
+        <input type="email" placeholder="Email" id="register-email">
+        <input type="password" placeholder="Password" id="register-password">
+        <button id="register-btn">Register</button>
+        <button class="close-btn" id="close-modal-btn">Close</button>
+    </div>
+</div>
+
 <div class="main-content">
     <!-- Dashboard Section -->
-    <div id="dashboard" style="display: block;">
-        <h1 id="totalJobsLabel">Total Jobs</h1>
-        <!-- (Dashboard Content) -->
+    <div id="dashboard">
+        <h1>Job Application Overview</h1>
+        <div class="stats-container">
+            <div class="stat-card">
+                <i class="fas fa-briefcase"></i>
+                <h2 id="totalJobsLabel">Total Jobs</h2>
+                <p id="totalJobs">0</p>
+            </div>
+            <div class="stat-card pending">
+                <i class="fas fa-clock"></i>
+                <h2 id="pendingLabel">Pending</h2>
+                <p id="pendingJobs">0</p>
+            </div>
+            <div class="stat-card accepted">
+                <i class="fas fa-check-circle"></i>
+                <h2 id="acceptedLabel">Accepted</h2>
+                <p id="acceptedJobs">0</p>
+            </div>
+            <div class="stat-card rejected">
+                <i class="fas fa-times-circle"></i>
+                <h2 id="rejectedLabel">Rejected</h2>
+                <p id="rejectedJobs">0</p>
+            </div>
+        </div>
+        <canvas id="jobsChart" width="400" height="200"></canvas>
+    </div>
+
+    <!-- Add Job Section -->
+    <div id="add-job">
+        <h1 id="addJobLabel">Add Job</h1>
+        <form id="addJobForm">
+            <label for="jobTitle">Job Title</label>
+            <input type="text" id="jobTitle" placeholder="Job Title" required>
+            <label for="companyName">Company Name</label>
+            <input type="text" id="companyName" placeholder="Company Name" required>
+            <label for="applicationDate">Application Date</label>
+            <input type="date" id="applicationDate" required>
+            <label for="jobStatus">Job Status</label>
+            <select id="jobStatus" required>
+                <option value="Applied">Applied</option>
+                <option value="Interview Scheduled">Interview Scheduled</option>
+                <option value="Offer Received">Offer Received</option>
+                <option value="Rejected">Rejected</option>
+            </select>
+            <button type="submit">Add Job</button>
+        </form>
+    </div>
+
+    <!-- Applications Section -->
+    <div id="applications">
+        <h1 id="applicationsLabel">Applications</h1>
+        <div id="applicationsList"></div>
     </div>
 
     <!-- Settings Section -->
@@ -71,19 +110,41 @@
                 <option value="light">Light</option>
                 <option value="dark">Dark</option>
             </select>
+            <br>
+            <label for="notificationToggle" id="enableNotificationsLabel">Enable Notifications:</label>
+            <input type="checkbox" id="notificationToggle">
+            <br>
             <label for="languageSelect" id="languageLabel">Language:</label>
             <select id="languageSelect">
                 <option value="en">English</option>
                 <option value="es">Spanish</option>
                 <option value="fr">French</option>
             </select>
-            <label for="notificationToggle" id="enableNotificationsLabel">Enable Notifications:</label>
-            <input type="checkbox" id="notificationToggle">
+            <br>
+            <label for="privacyToggle" id="privacyModeLabel">Privacy Mode:</label>
+            <input type="checkbox" id="privacyToggle">
+            <br>
+            <label for="autoCloseSidebarToggle" id="autoCloseSidebarLabel">Auto-Close Sidebar:</label>
+            <input type="checkbox" id="autoCloseSidebarToggle">
+            <br>
             <button type="submit" id="saveSettingsButton">Save Settings</button>
         </form>
     </div>
 </div>
 
+<!-- Job Details Modal -->
+<div id="job-details-modal" class="job-details-modal">
+    <div class="job-details-content">
+        <h2 id="jobDetailsTitle">Job Title</h2>
+        <p id="jobDetailsCompany">Company: </p>
+        <p id="jobDetailsDate">Date: </p>
+        <p id="jobDetailsStatus">Status: </p>
+        <button class="job-details-close-btn" id="close-job-details-btn">Close</button>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="script.js"></script> <!--  line to include your JavaScript file -->
 <script>
 // Multi-Language Support
 const translations = {
@@ -143,38 +204,65 @@ document.getElementById("languageSelect").addEventListener("change", function() 
     updateLanguage(selectedLanguage);
 });
 
-// Dark Mode Toggle
-document.querySelector('.toggle-btn').addEventListener('click', function() {
-    document.body.classList.toggle('dark-mode');
-});
+document.addEventListener('DOMContentLoaded', function() {
+    const menuBtn = document.querySelector('.menu-btn');
+    const toggleBtn = document.querySelector('.toggle-btn');
+    const sidebar = document.querySelector('.sidebar');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('.main-content > div');
+    const loginRegisterBtn = document.getElementById('login-register-btn');
+    const loginRegisterModal = document.getElementById('login-register-modal');
+    const closeModalBtn = document.getElementById('close-modal-btn');
 
-// Save Settings
-document.getElementById("settingsForm").addEventListener("submit", function(event) {
-    event.preventDefault();
-    const theme = document.getElementById("themeSelect").value;
-    const language = document.getElementById("languageSelect").value;
-    const notificationsEnabled = document.getElementById("notificationToggle").checked;
+    // Toggle sidebar visibility
+    menuBtn.addEventListener('click', function() {
+        sidebar.classList.toggle('show-sidebar');
+    });
 
-    localStorage.setItem("theme", theme);
-    localStorage.setItem("language", language);
-    localStorage.setItem("notificationsEnabled", notificationsEnabled);
+    // Toggle dark mode
+    toggleBtn.addEventListener('click', function() {
+        document.body.classList.toggle('dark-mode');
+    });
 
-    alert("Settings saved!");
-});
+    // Navigation link click event
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = this.getAttribute('data-target');
+            sections.forEach(section => {
+                if (section.id === target) {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+            // Auto-close sidebar
+            sidebar.classList.remove('show-sidebar');
+        });
+    });
 
-document.addEventListener("DOMContentLoaded", () => {
-    const savedTheme = localStorage.getItem("theme") || "light";
-    const savedLanguage = localStorage.getItem("language") || "en";
+    // Show login/register modal
+    loginRegisterBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        loginRegisterModal.style.display = 'flex';
+    });
 
-    document.getElementById("themeSelect").value = savedTheme;
-    document.getElementById("languageSelect").value = savedLanguage;
+    // Close login/register modal
+    closeModalBtn.addEventListener('click', function() {
+        loginRegisterModal.style.display = 'none';
+    });
 
-    updateLanguage(savedLanguage);
-    if (savedTheme === "dark") {
-        document.body.classList.add("dark-mode");
-    }
+    // Close modal when clicking outside of it
+    window.addEventListener('click', function(e) {
+        if (e.target === loginRegisterModal) {
+            loginRegisterModal.style.display = 'none';
+        }
+    });
+
+    // Load default language
+    updateLanguage(document.getElementById("languageSelect").value);
 });
 </script>
-
 </body>
 </html>
+

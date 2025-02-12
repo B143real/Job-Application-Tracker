@@ -1,0 +1,496 @@
+/* 🔥 Base Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    transition: all 0.3s ease-in-out;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #121212;
+    color: #fff;
+    overflow-x: hidden;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 🔹 Header */
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.menu-btn, .toggle-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.header-title {
+    flex-grow: 1;
+    text-align: center;
+    margin: 0;
+}
+
+.menu-btn {
+    position: absolute;
+    left: 10px;
+}
+
+.toggle-btn {
+    position: absolute;
+    right: 10px;
+}
+
+/* 🔹 Sidebar */
+.sidebar {
+    width: 250px;
+    height: 100%;
+    position: fixed;
+    left: -250px;
+    top: 0;
+    transition: left 0.3s ease;
+    background: linear-gradient(135deg, #181818, #2a2a2a);
+    padding: 20px;
+    box-shadow: 4px 0 8px rgba(0, 0, 0, 0.2);
+    background-color: #444;
+    color: white;
+    overflow-y: auto;
+}
+
+.sidebar.show-sidebar {
+    left: 0;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar ul li {
+    margin: 20px 0;
+}
+
+.sidebar ul li a {
+    display: block;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+    background: #444;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar ul li a:hover {
+    background: #4caf50;
+    transform: scale(1.05);
+}
+
+/* 🔹 Main Content */
+.main-content {
+    margin-left: 50px;
+    padding: 20px;
+    flex: 1;
+    margin-left: 220px;
+    padding: 20px;
+}
+
+/* 🔹 Dashboard Stats (Grid Layout) */
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.stat-card {
+    background: linear-gradient(135deg, #222, #333);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease-in-out;
+    margin-bottom: 15px;
+}
+
+.stat-card:hover {
+    transform: scale(1.05);
+}
+
+.stat-card i {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.stat-card.pending { background: linear-gradient(135deg, #f4b400, #f4c400); }
+.stat-card.accepted { background: linear-gradient(135deg, #34a853, #45b864); }
+.stat-card.rejected { background: linear-gradient(135deg, #ea4335, #fb5446); }
+
+.stat-card h2 {
+    margin-bottom: 10px;
+}
+
+.stat-card p {
+    margin-bottom: 5px;
+}
+
+/* 🔹 Progress Bar */
+.progress-bar {
+    width: 100%;
+    height: 20px;
+    background-color: #333;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-bar div {
+    height: 100%;
+    background-color: #4caf50;
+    width: 0%;
+    transition: width 1s ease-in-out;
+}
+
+/* 🔹 Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #222;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.modal-content input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4caf50;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.close-btn {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* 🔹 Add Job Section */
+#add-job {
+    display: none;
+}
+
+#add-job h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#addJobForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+#addJobForm input, #addJobForm select, #addJobForm button {
+    width: 80%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#addJobForm button {
+    background-color: #4caf50;
+    color: white;
+    cursor: pointer;
+}
+
+/* 🔹 Applications Section */
+#applications {
+    display: none;
+}
+
+#applications h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.job-card {
+    background: linear-gradient(135deg, #222, #333);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+}
+
+.job-card h2 {
+    margin-bottom: 10px;
+}
+
+.job-card p {
+    margin-bottom: 5px;
+}
+
+/* 🔹 Settings Section */
+#settings {
+    display: none;
+}
+
+#settings h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* 🔹 Filter Form */
+.filter-form {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.filter-input, .filter-select, .filter-btn {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-size: 1rem;
+}
+
+.filter-input, .filter-select {
+    width: 200px;
+    background-color: #333;
+    color: white;
+}
+
+.filter-btn {
+    background-color: #4caf50;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.filter-btn:hover {
+    background-color: #45a049;
+}
+
+/* 🔹 Job Card Buttons */
+.job-card .edit-btn, .job-card .delete-btn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-right: 5px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.job-card .edit-btn {
+    background-color: #2196f3;
+    color: white;
+}
+
+.job-card .edit-btn:hover {
+    background-color: #1e88e5;
+}
+
+.job-card .delete-btn {
+    background-color: #f44336;
+    color: white;
+}
+
+.job-card .delete-btn:hover {
+    background-color: #e53935;
+}
+
+#settingsForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+#settingsForm label {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+#settingsForm select, #settingsForm input[type="checkbox"], #settingsForm button {
+    width: 80%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#settingsForm button {
+    background-color: #4caf50;
+    color: white;
+    cursor: pointer;
+}
+
+/* Dark Mode */
+.dark-mode {
+    background-color: #fff;
+    color: #000;
+}
+
+.dark-mode header,
+.dark-mode .sidebar,
+.dark-mode .stat-card,
+.dark-mode .modal-content,
+.dark-mode .job-card,
+.dark-mode #settingsForm select,
+.dark-mode #settingsForm input[type="checkbox"],
+.dark-mode #settingsForm button {
+    background-color: #f0f0f0;
+    color: #000;
+}
+
+.dark-mode .toggle-btn,
+.dark-mode .menu-btn {
+    background: #000;
+    color: #fff;
+}
+
+.dark-mode .sidebar ul li a {
+    background: #ddd;
+    color: #000;
+}
+
+.dark-mode .sidebar ul li a:hover {
+    background: #bbb;
+}
+
+.dark-mode .stat-card.pending { background: #ffeb3b; }
+.dark-mode .stat-card.accepted { background: #8bc34a; }
+.dark-mode .stat-card.rejected { background: #f44336; }
+
+/* 🔹 Job Details Modal */
+.job-details-modal {
+    display: none;
+    position: fixed;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.job-details-content {
+    background-color: #222;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.job-details-content h2 {
+    margin-bottom: 10px;
+}
+
+.job-details-content p {
+    margin-bottom: 5px;
+}
+
+.job-details-close-btn {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 10px;
+    }
+
+    .sidebar {
+        padding: 10px;
+    }
+
+    .main-content {
+        padding: 10px;
+    }
+}
+
