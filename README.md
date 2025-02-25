@@ -1,5 +1,3 @@
-
-
 # Job Application Tracker
 
 ## Project Vision
@@ -36,7 +34,7 @@ This feedback shaped the design and development process, ensuring the tool meets
    - Ensures users complete required fields (e.g., "Job Title," "Company," "Status," and "Date Applied") before submission using HTML5's `required` attribute.
 8. **Multi-Language Support**: Switch between English, Spanish, and French with dynamically updated interface text.
 9. **Dark Mode**: Toggle between light and dark themes for better user experience.
-10. **Settings Panel**: Customize preferences like theme, language, and notifications, with settings saved persistently using **localStorage**.
+10. **Graphical Representation for Stats**: Integrated Chart.js to display a bar chart representing job application stats (Total Jobs, Pending, Accepted, Rejected) on the dashboard.
 
 ---
 
@@ -46,7 +44,7 @@ This feedback shaped the design and development process, ensuring the tool meets
 - **JavaScript**: Interactivity, data handling, and local storage integration.
 - **localStorage**: For saving and persisting user settings (theme, language, and notifications).
 - **Font Awesome**: For icons.
-- **Chart.js**: For visualizing job application data (optional, if used).
+- **Chart.js**: For visualizing job application data.
 
 ---
 
@@ -66,7 +64,7 @@ This feedback shaped the design and development process, ensuring the tool meets
    - Experience built-in form validation for required fields.
    - Switch between languages (English, Spanish, French).
    - Toggle between light and dark themes.
-   - Modify settings like language, theme, and notifications in the settings panel.
+   - View graphical stats on the dashboard using Chart.js.
 
 ---
 
@@ -120,10 +118,22 @@ This feedback shaped the design and development process, ensuring the tool meets
 
   4. **Integrate User Feedback:**
      - Gathered feedback from peers or instructors and integrated relevant suggestions or improvements into the app.
-     - Implemented a simulation of user authentication or other security measures for securing job data .
+     - Implemented a simulation of user authentication or other security measures for securing job data.
 
   5. **Finalize LocalStorage and Data Management:**
      - Ensured all data (like job applications, preferences, etc.) are correctly stored and retrieved from localStorage.
+
+### **Sprint 6 (Feb 9 – Feb 23, 2025)**
+- **Goal**: Finalize features and improve user experience.
+- **Completed**:
+  1. **Removed Privacy Mode, Enable Notifications, and Auto-Close Sidebar from the Settings Section**:
+     - Simplified the settings section by removing these options.
+  2. **Added Graphical Representation for Stats in the Dashboard**:
+     - Integrated Chart.js to display a bar chart representing job application stats (Total Jobs, Pending, Accepted, Rejected) on the dashboard.
+  3. **Improved Application Tables**:
+     - Enhanced the display of application tables for better readability and usability.
+  4. **Improved Text Box Input**:
+     - Refined the text box input functionality for a smoother user experience.
 
 ---
 
@@ -133,8 +143,8 @@ This feedback shaped the design and development process, ensuring the tool meets
 1. Ensuring data persistence without a backend.
 2. Debugging filtering logic for complex user inputs.
 3. Designing an intuitive and visually appealing UI with multi-language and theme toggle functionality.
-4. Making sure while css was in a diferent file the website still runned on the live server
-5. Improving the layout 
+4. Making sure while CSS was in a different file the website still ran on the live server.
+5. Improving the layout.
 
 ### **Solutions:**
 1. Used browser **localStorage** for lightweight and reliable data persistence.
@@ -142,13 +152,8 @@ This feedback shaped the design and development process, ensuring the tool meets
 3. Enhanced the layout and functionality with **CSS** for a single-page application and ensured clarity across multiple languages and themes.
 
 ---
-NEXT STEPS (Sprint 6)
-1. Display appplication tables properly
-2. Decide between the functionality of private mode
-3. Display graphical stats on the dasboard section 
-4. Improve user authentication Login/Register simulation as its a SPA project
-5. improve the text box input
 
+## Next Steps
+1. Consult pals and get feedback for next steos 
 *This README will continue to be updated as the project progresses.*
 ```
-
