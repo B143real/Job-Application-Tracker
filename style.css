@@ -494,3 +494,114 @@ header {
     }
 }
 
+/* 🔹 Applications Table */
+#applicationsTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: left;
+}
+
+#applicationsTable th, #applicationsTable td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+}
+
+#applicationsTable th {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+#applicationsTable tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#applicationsTable tr:hover {
+    background-color: #f1f1f1;
+}
+
+.edit-btn, .delete-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.delete-btn {
+    background-color: #f44336;
+}
+
+.edit-btn:hover, .delete-btn:hover {
+    opacity: 0.8;
+}
+
+/* General table styling */
+#applicationsTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: left;
+}
+
+#applicationsTable th, #applicationsTable td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+}
+
+#applicationsTable th {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+#applicationsTable tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#applicationsTable tr:hover {
+    background-color: #f1f1f1;
+}
+
+.edit-btn, .delete-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.delete-btn {
+    background-color: #f44336;
+}
+
+.edit-btn:hover, .delete-btn:hover {
+    opacity: 0.8;
+}
+
+/* Dark mode styling */
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+body.dark-mode #applicationsTable th {
+    background-color: #333333;
+    color: #ffffff;
+}
+
+body.dark-mode #applicationsTable tr:nth-child(even) {
+    background-color: #2a2a2a;
+}
+
+body.dark-mode #applicationsTable tr:hover {
+    background-color: #444444;
+}
+
+body.dark-mode .edit-btn, body.dark-mode .delete-btn {
+    color: #ffffff;
+}
+

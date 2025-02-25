@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Job Tracker 2.0</title>
+    <title id="pageTitle">Job Tracker 2.0</title>
     <script src="https://kit.fontawesome.com/YOUR-KIT-ID.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
@@ -13,42 +13,25 @@
 
     <header>
         <div class="header-container">
-            <button class="menu-btn">☰ Menu</button>
-            <h1 class="header-title">Job Application Tracker</h1>
-            <button class="toggle-btn">🌙</button>
+            <button type="button" class="menu-btn">☰ Menu</button>
+            <h1 class="header-title" id="headerTitle">Job Application Tracker</h1>
+            <button type="button" class="toggle-btn">🌙</button>
         </div>
     </header>
 
 <nav class="sidebar">
     <ul>
-        <li><a href="#" class="nav-link" id="login-register-btn">Login/Register</a></li>
-        <li><a href="#" class="nav-link" data-target="dashboard">Dashboard</a></li>
-        <li><a href="#" class="nav-link" data-target="add-job">Add Job</a></li>
-        <li><a href="#" class="nav-link" data-target="applications">Applications</a></li>
-        <li><a href="#" class="nav-link" data-target="settings">Settings</a></li>
+        <li><a href="#" class="nav-link" data-target="dashboard" id="dashboardLink">Dashboard</a></li>
+        <li><a href="#" class="nav-link" data-target="add-job" id="addJobLink">Add Job</a></li>
+        <li><a href="#" class="nav-link" data-target="applications" id="applicationsLink">Applications</a></li>
+        <li><a href="#" class="nav-link" data-target="settings" id="settingsLink">Settings</a></li>
     </ul>
 </nav>
-
-<!-- Modal -->
-<div id="login-register-modal" class="modal">
-    <div class="modal-content">
-        <h2>Login</h2>
-        <input type="text" placeholder="Username" id="login-username">
-        <input type="password" placeholder="Password" id="login-password">
-        <button id="login-btn">Login</button>
-        <h2>Register</h2>
-        <input type="text" placeholder="Username" id="register-username">
-        <input type="email" placeholder="Email" id="register-email">
-        <input type="password" placeholder="Password" id="register-password">
-        <button id="register-btn">Register</button>
-        <button class="close-btn" id="close-modal-btn">Close</button>
-    </div>
-</div>
 
 <div class="main-content">
     <!-- Dashboard Section -->
     <div id="dashboard">
-        <h1>Job Application Overview</h1>
+        <h1 id="dashboardTitle">Job Application Overview</h1>
         <div class="stats-container">
             <div class="stat-card">
                 <i class="fas fa-briefcase"></i>
@@ -82,8 +65,12 @@
             <input type="text" id="jobTitle" placeholder="Job Title" required>
             <label for="companyName">Company Name</label>
             <input type="text" id="companyName" placeholder="Company Name" required>
+            <label for="location">Location</label>
+            <input type="text" id="location" placeholder="Location" required>
             <label for="applicationDate">Application Date</label>
             <input type="date" id="applicationDate" required>
+            <label for="notes">Notes</label>
+            <textarea id="notes" placeholder="Notes"></textarea>
             <label for="jobStatus">Job Status</label>
             <select id="jobStatus" required>
                 <option value="Applied">Applied</option>
@@ -98,7 +85,24 @@
     <!-- Applications Section -->
     <div id="applications">
         <h1 id="applicationsLabel">Applications</h1>
-        <div id="applicationsList"></div>
+        <div id="applicationsList">
+            <table id="applicationsTable">
+                <thead>
+                    <tr>
+                        <th>Job Title</th>
+                        <th>Company</th>
+                        <th>Location</th>
+                        <th>Application Date</th>
+                        <th>Notes</th>
+                        <th>Progress</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Job application rows will be dynamically inserted here -->
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <!-- Settings Section -->
@@ -111,21 +115,12 @@
                 <option value="dark">Dark</option>
             </select>
             <br>
-            <label for="notificationToggle" id="enableNotificationsLabel">Enable Notifications:</label>
-            <input type="checkbox" id="notificationToggle">
-            <br>
             <label for="languageSelect" id="languageLabel">Language:</label>
             <select id="languageSelect">
                 <option value="en">English</option>
                 <option value="es">Spanish</option>
                 <option value="fr">French</option>
             </select>
-            <br>
-            <label for="privacyToggle" id="privacyModeLabel">Privacy Mode:</label>
-            <input type="checkbox" id="privacyToggle">
-            <br>
-            <label for="autoCloseSidebarToggle" id="autoCloseSidebarLabel">Auto-Close Sidebar:</label>
-            <input type="checkbox" id="autoCloseSidebarToggle">
             <br>
             <button type="submit" id="saveSettingsButton">Save Settings</button>
         </form>
@@ -139,7 +134,7 @@
         <p id="jobDetailsCompany">Company: </p>
         <p id="jobDetailsDate">Date: </p>
         <p id="jobDetailsStatus">Status: </p>
-        <button class="job-details-close-btn" id="close-job-details-btn">Close</button>
+        <button type="button" class="job-details-close-btn" id="close-job-details-btn">Close</button>
     </div>
 </div>
 
@@ -149,6 +144,13 @@
 // Multi-Language Support
 const translations = {
     en: {
+        pageTitle: "Job Tracker 2.0",
+        headerTitle: "Job Application Tracker",
+        dashboardLink: "Dashboard",
+        addJobLink: "Add Job",
+        applicationsLink: "Applications",
+        settingsLink: "Settings",
+        dashboardTitle: "Job Application Overview",
         totalJobs: "Total Jobs",
         pending: "Pending",
         accepted: "Accepted",
@@ -161,6 +163,13 @@ const translations = {
         saveSettings: "Save Settings"
     },
     es: {
+        pageTitle: "Rastreador de Trabajos 2.0",
+        headerTitle: "Rastreador de Solicitudes de Trabajo",
+        dashboardLink: "Tablero",
+        addJobLink: "Agregar Trabajo",
+        applicationsLink: "Aplicaciones",
+        settingsLink: "Configuraciones",
+        dashboardTitle: "Resumen de Solicitudes de Trabajo",
         totalJobs: "Trabajos Totales",
         pending: "Pendiente",
         accepted: "Aceptado",
@@ -173,6 +182,13 @@ const translations = {
         saveSettings: "Guardar Configuraciones"
     },
     fr: {
+        pageTitle: "Suivi des Emplois 2.0",
+        headerTitle: "Suivi des Candidatures",
+        dashboardLink: "Tableau de Bord",
+        addJobLink: "Ajouter un Emploi",
+        applicationsLink: "Applications",
+        settingsLink: "Paramètres",
+        dashboardTitle: "Aperçu des Candidatures",
         totalJobs: "Emplois Totals",
         pending: "En Attente",
         accepted: "Accepté",
@@ -187,6 +203,13 @@ const translations = {
 };
 
 function updateLanguage(language) {
+    document.getElementById("pageTitle").textContent = translations[language].pageTitle;
+    document.getElementById("headerTitle").textContent = translations[language].headerTitle;
+    document.getElementById("dashboardLink").textContent = translations[language].dashboardLink;
+    document.getElementById("addJobLink").textContent = translations[language].addJobLink;
+    document.getElementById("applicationsLink").textContent = translations[language].applicationsLink;
+    document.getElementById("settingsLink").textContent = translations[language].settingsLink;
+    document.getElementById("dashboardTitle").textContent = translations[language].dashboardTitle;
     document.getElementById("totalJobsLabel").textContent = translations[language].totalJobs;
     document.getElementById("pendingLabel").textContent = translations[language].pending;
     document.getElementById("acceptedLabel").textContent = translations[language].accepted;
@@ -210,9 +233,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const sidebar = document.querySelector('.sidebar');
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('.main-content > div');
-    const loginRegisterBtn = document.getElementById('login-register-btn');
-    const loginRegisterModal = document.getElementById('login-register-modal');
-    const closeModalBtn = document.getElementById('close-modal-btn');
 
     // Toggle sidebar visibility
     menuBtn.addEventListener('click', function() {
@@ -241,28 +261,168 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Show login/register modal
-    loginRegisterBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        loginRegisterModal.style.display = 'flex';
-    });
+    // Load default language
+    updateLanguage(document.getElementById("languageSelect").value);
 
-    // Close login/register modal
-    closeModalBtn.addEventListener('click', function() {
-        loginRegisterModal.style.display = 'none';
-    });
+    const applicationsTableBody = document.querySelector('#applicationsTable tbody');
+    const addJobForm = document.getElementById('addJobForm');
+    const totalJobsLabel = document.getElementById('totalJobs');
+    const pendingJobsLabel = document.getElementById('pendingJobs');
+    const acceptedJobsLabel = document.getElementById('acceptedJobs');
+    const rejectedJobsLabel = document.getElementById('rejectedJobs');
 
-    // Close modal when clicking outside of it
-    window.addEventListener('click', function(e) {
-        if (e.target === loginRegisterModal) {
-            loginRegisterModal.style.display = 'none';
+    let jobApplications = [];
+
+    const ctx = document.getElementById('jobsChart').getContext('2d');
+    const jobsChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Total Jobs', 'Pending', 'Accepted', 'Rejected'],
+            datasets: [{
+                label: 'Job Applications',
+                data: [0, 0, 0, 0],
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(255, 99, 132, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 99, 132, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
         }
     });
 
-    // Load default language
-    updateLanguage(document.getElementById("languageSelect").value);
+    addJobForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const jobTitle = document.getElementById('jobTitle').value;
+        const companyName = document.getElementById('companyName').value;
+        const location = document.getElementById('location').value;
+        const applicationDate = document.getElementById('applicationDate').value;
+        const notes = document.getElementById('notes').value;
+        const jobStatus = document.getElementById('jobStatus').value;
+
+        const progress = getProgressFromStatus(jobStatus);
+
+        const newApplication = {
+            title: jobTitle,
+            company: companyName,
+            location: location,
+            date: applicationDate,
+            notes: notes,
+            progress: progress,
+            status: jobStatus
+        };
+
+        jobApplications.push(newApplication);
+        addApplicationToTable(newApplication);
+        updateStats();
+
+        addJobForm.reset();
+    });
+
+    function getProgressFromStatus(status) {
+        switch (status) {
+            case 'Applied':
+                return 25;
+            case 'Interview Scheduled':
+                return 50;
+            case 'Offer Received':
+                return 100;
+            case 'Rejected':
+                return 0;
+            default:
+                return 0;
+        }
+    }
+
+    function addApplicationToTable(application) {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${application.title}</td>
+            <td>${application.company}</td>
+            <td>${application.location}</td>
+            <td>${application.date}</td>
+            <td>${application.notes}</td>
+            <td>
+                <progress value="${application.progress}" max="100"></progress>
+            </td>
+            <td>
+                <button class="edit-btn">Edit</button>
+                <button class="delete-btn">Delete</button>
+            </td>
+        `;
+        applicationsTableBody.appendChild(row);
+    }
+
+    function updateStats() {
+        const totalJobs = jobApplications.length;
+        const pendingJobs = jobApplications.filter(app => app.status === 'Applied' || app.status === 'Interview Scheduled').length;
+        const acceptedJobs = jobApplications.filter(app => app.status === 'Offer Received').length;
+        const rejectedJobs = jobApplications.filter(app => app.status === 'Rejected').length;
+
+        totalJobsLabel.textContent = totalJobs;
+        pendingJobsLabel.textContent = pendingJobs;
+        acceptedJobsLabel.textContent = acceptedJobs;
+        rejectedJobsLabel.textContent = rejectedJobs;
+
+        jobsChart.data.datasets[0].data = [totalJobs, pendingJobs, acceptedJobs, rejectedJobs];
+        jobsChart.update();
+    }
+
+    applicationsTableBody.addEventListener('click', function(event) {
+        if (event.target.classList.contains('edit-btn')) {
+            const row = event.target.closest('tr');
+            editApplication(row);
+        } else if (event.target.classList.contains('delete-btn')) {
+            const row = event.target.closest('tr');
+            deleteApplication(row);
+        }
+    });
+
+    function editApplication(row) {
+        const title = row.cells[0].textContent;
+        const company = row.cells[1].textContent;
+        const location = row.cells[2].textContent;
+        const date = row.cells[3].textContent;
+        const notes = row.cells[4].textContent;
+        const progress = row.cells[5].querySelector('progress').value;
+
+        document.getElementById('jobTitle').value = title;
+        document.getElementById('companyName').value = company;
+        document.getElementById('location').value = location;
+        document.getElementById('applicationDate').value = date;
+        document.getElementById('notes').value = notes;
+        document.getElementById('progress').value = progress;
+
+        const index = Array.from(applicationsTableBody.children).indexOf(row);
+        jobApplications.splice(index, 1);
+        row.remove();
+        updateStats();
+    }
+
+    function deleteApplication(row) {
+        if (confirm('Are you sure you want to delete this application?')) {
+            const index = Array.from(applicationsTableBody.children).indexOf(row);
+            jobApplications.splice(index, 1);
+            row.remove();
+            updateStats();
+        }
+    }
 });
 </script>
 </body>
 </html>
-
